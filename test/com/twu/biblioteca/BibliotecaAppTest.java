@@ -14,6 +14,7 @@ import java.util.List;
 
 import static java.lang.System.setOut;
 import static java.util.Arrays.asList;
+import static java.util.Collections.emptyList;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertEquals;
@@ -46,29 +47,61 @@ public class BibliotecaAppTest {
     @Test
     public void shouldPrintABookTitleWhenIStartTheApp() throws IOException {
         ArrayList<String> titles = new ArrayList<>();
-        String expected = "Catcher in the Rye";
-        titles.add(expected);
+        String expectedBook1 = "Catcher in the Rye, J.D. Salinger, 1975";
+        titles.add(expectedBook1);
 
-        app.listBooks(titles);
+        ArrayList<Book> bookList = new ArrayList<>();
+        Book book1 = new Book("Catcher in the Rye", "J.D. Salinger", 1975);
+        bookList.add(book1);
 
-        List<String> books = asList(outputStream.toString().split("\n"));
+        app.listBooks(titles, bookList);
 
-        assertThat(books, is(titles));
+        List<String> outputBookList = asList(outputStream.toString().split("\n"));
+
+        assertThat(outputBookList, is(titles));
     }
 
     @Test
     public void shouldPrintTwoDifferentBookTitlesWhenIStartTheApp() throws IOException {
         ArrayList<String> titles = new ArrayList<>();
-        String expected = "Who Fears Death";
-        String expected2 = "1984";
-        titles.add(expected);
-        titles.add(expected2);
+        String expectedBook1 = "Who Fears Death, Nnedi Okorafor, 2010";
+        String expectedBook2 = "1984, George Orwell, 1966";
+        titles.add(expectedBook1);
+        titles.add(expectedBook2);
 
-        app.listBooks(titles);
+        ArrayList<Book> bookList = new ArrayList<>();
+        Book book1 = new Book("Who Fears Death", "Nnedi Okorafor", 2010);
+        Book book2 = new Book("1984", "George Orwell", 1966);
+        bookList.add(book1);
+        bookList.add(book2);
 
-        List<String> books = asList(outputStream.toString().split("\n"));
+        app.listBooks(titles, bookList);
+        List<String> outputBookList = asList(outputStream.toString().split("\n"));
 
-        assertThat(books, is(titles));
+        assertThat(outputBookList, is(titles));
     }
+
+   @Test
+   public void shouldShowAuthorTitleAndYearOfBookWhenIStartTheApp() {
+        ArrayList<String> expectedBookList = new ArrayList<>();
+        String expectedBook1 = "Who Fears Death, Nnedi Okorafor, 2010";
+        String expectedBook2 = "1984, George Orwell, 1966";
+        expectedBookList.add(expectedBook1);
+        expectedBookList.add(expectedBook2);
+
+        // set up book list
+        ArrayList<Book> bookList = new ArrayList<>();
+        Book book1 = new Book("Who Fears Death", "Nnedi Okorafor", 2010);
+        Book book2 = new Book("1984", "George Orwell", 1966);
+        bookList.add(book1);
+        bookList.add(book2);
+
+
+        app.listBooks(expectedBookList,bookList);
+
+        List<String> outputBookList = asList(outputStream.toString().split("\n"));
+
+        assertThat(outputBookList, is(expectedBookList));
+   }
 
 }

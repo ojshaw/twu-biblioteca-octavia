@@ -13,20 +13,22 @@ public class BibliotecaApp {
     }
 
     public static void main(String[] args) {
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        PrintStream out = new PrintStream(outputStream);
+        PrintStream out = new PrintStream(System.out);
         BibliotecaApp app = new BibliotecaApp(out);
         app.start();
     }
 
     public void start() {
         out.println("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!");
+        ArrayList<String> books = new ArrayList<>();
+//        books.add("I am a book");
+//        listBooks(books);
     }
 
 
-    public void listBooks(ArrayList<String> books) {
-        for (String book : books) {
-            out.println(book);
+    public void listBooks(ArrayList<String> list, ArrayList<Book> books) {
+        for (Book book : books) {
+            out.println(book.toString());
         }
         //out.println("Catcher in the Rye");
     }
