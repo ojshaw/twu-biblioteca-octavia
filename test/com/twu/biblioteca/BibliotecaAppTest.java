@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -44,10 +45,27 @@ public class BibliotecaAppTest {
 
     @Test
     public void shouldPrintABookTitleWhenIStartTheApp() throws IOException {
-        app.listBooks();
-        List<String> titles = new LinkedList<>();
+        ArrayList<String> titles = new ArrayList<>();
         String expected = "Catcher in the Rye";
         titles.add(expected);
+
+        app.listBooks(titles);
+
+        List<String> books = asList(outputStream.toString().split("\n"));
+
+        assertThat(books, is(titles));
+    }
+
+    @Test
+    public void shouldPrintTwoDifferentBookTitlesWhenIStartTheApp() throws IOException {
+        ArrayList<String> titles = new ArrayList<>();
+        String expected = "Who Fears Death";
+        String expected2 = "1984";
+        titles.add(expected);
+        titles.add(expected2);
+
+        app.listBooks(titles);
+
         List<String> books = asList(outputStream.toString().split("\n"));
 
         assertThat(books, is(titles));

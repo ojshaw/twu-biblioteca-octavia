@@ -2,6 +2,8 @@ package com.twu.biblioteca;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BibliotecaApp {
     public PrintStream out;
@@ -22,7 +24,10 @@ public class BibliotecaApp {
     }
 
 
-    public void listBooks() {
-        out.println("Catcher in the Rye");
+    public void listBooks(ArrayList<String> books) {
+        for (String book : books) {
+            out.println(book);
+        }
+        //out.println("Catcher in the Rye");
     }
 }
