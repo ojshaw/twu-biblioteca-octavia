@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 public class BibliotecaApp {
@@ -10,11 +11,18 @@ public class BibliotecaApp {
     }
 
     public static void main(String[] args) {
-        System.out.println("Hello, world!");
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        PrintStream out = new PrintStream(outputStream);
+        BibliotecaApp app = new BibliotecaApp(out);
+        app.start();
     }
-
 
     public void start() {
         out.println("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!");
+    }
+
+
+    public void listBooks() {
+        out.println("Catcher in the Rye");
     }
 }
