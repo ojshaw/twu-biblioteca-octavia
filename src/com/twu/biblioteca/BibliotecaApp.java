@@ -19,10 +19,15 @@ public class BibliotecaApp {
     }
 
     public void start() {
-        out.println("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!");
         ArrayList<String> books = new ArrayList<>();
+        welcome();
+        displayMenu();
 //        books.add("I am a book");
 //        listBooks(books);
+    }
+
+    public void welcome() {
+        out.println("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!");
     }
 
 
@@ -30,6 +35,9 @@ public class BibliotecaApp {
         for (Book book : books) {
             out.println(book.toString());
         }
-        //out.println("Catcher in the Rye");
+    }
+
+    public void displayMenu() {
+        out.println("List of Books");
     }
 }

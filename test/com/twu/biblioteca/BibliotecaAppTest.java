@@ -39,6 +39,8 @@ public class BibliotecaAppTest {
     public void shouldPrintWelcomeWhenIStartTheApp() throws IOException {
         app.start();
 
+        String[] outputArray = outputStream.toString().split("\n");
+
         String[] welcome = outputStream.toString().split("\n");
 
         assertThat(welcome[0], is("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!" ));
@@ -104,10 +106,14 @@ public class BibliotecaAppTest {
         assertThat(outputBookList, is(expectedBookList));
    }
 
+    @Test
     public void shouldDisplayMenuWhenIStartTheApp() {
         app.start();
 
         String[] startOutput = outputStream.toString().split("\n");
+        String expectedMenu = "List of Books";
+
+        assertThat(startOutput[1], is(expectedMenu));
 
     }
 }
