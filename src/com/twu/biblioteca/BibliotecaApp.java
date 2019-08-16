@@ -26,7 +26,7 @@ public class BibliotecaApp {
     }
 
 
-    public void listBooks(ArrayList<String> list, ArrayList<Book> books) {
+    public void listBooks(ArrayList<Book> books) {
         for (Book book : books) {
             out.println(book.toString());
         }

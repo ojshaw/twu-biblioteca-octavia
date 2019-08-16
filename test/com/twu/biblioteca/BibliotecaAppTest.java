@@ -50,11 +50,11 @@ public class BibliotecaAppTest {
         String expectedBook1 = "Catcher in the Rye, J.D. Salinger, 1975";
         titles.add(expectedBook1);
 
-        ArrayList<Book> bookList = new ArrayList<>();
-        Book book1 = new Book("Catcher in the Rye", "J.D. Salinger", 1975);
-        bookList.add(book1);
+        ArrayList<Book> testBookList = new ArrayList<>();
+        Book testBook1 = new Book("Catcher in the Rye", "J.D. Salinger", 1975);
+        testBookList.add(testBook1);
 
-        app.listBooks(titles, bookList);
+        app.listBooks(testBookList);
 
         List<String> outputBookList = asList(outputStream.toString().split("\n"));
 
@@ -63,22 +63,23 @@ public class BibliotecaAppTest {
 
     @Test
     public void shouldPrintTwoDifferentBookTitlesWhenIStartTheApp() throws IOException {
-        ArrayList<String> titles = new ArrayList<>();
+        ArrayList<String> expectedBookList = new ArrayList<>();
         String expectedBook1 = "Who Fears Death, Nnedi Okorafor, 2010";
         String expectedBook2 = "1984, George Orwell, 1966";
-        titles.add(expectedBook1);
-        titles.add(expectedBook2);
+        expectedBookList.add(expectedBook1);
+        expectedBookList.add(expectedBook2);
 
-        ArrayList<Book> bookList = new ArrayList<>();
-        Book book1 = new Book("Who Fears Death", "Nnedi Okorafor", 2010);
-        Book book2 = new Book("1984", "George Orwell", 1966);
-        bookList.add(book1);
-        bookList.add(book2);
+        ArrayList<Book> testBookList = new ArrayList<>();
+        Book testBook1 = new Book("Who Fears Death", "Nnedi Okorafor", 2010);
+        Book testBook2 = new Book("1984", "George Orwell", 1966);
+        testBookList.add(testBook1);
+        testBookList.add(testBook2);
 
-        app.listBooks(titles, bookList);
+        app.listBooks(testBookList);
+
         List<String> outputBookList = asList(outputStream.toString().split("\n"));
 
-        assertThat(outputBookList, is(titles));
+        assertThat(outputBookList, is(expectedBookList));
     }
 
    @Test
@@ -89,19 +90,24 @@ public class BibliotecaAppTest {
         expectedBookList.add(expectedBook1);
         expectedBookList.add(expectedBook2);
 
-        // set up book list
-        ArrayList<Book> bookList = new ArrayList<>();
-        Book book1 = new Book("Who Fears Death", "Nnedi Okorafor", 2010);
-        Book book2 = new Book("1984", "George Orwell", 1966);
-        bookList.add(book1);
-        bookList.add(book2);
+        // set up test book list
+        ArrayList<Book> testBookList = new ArrayList<>();
+        Book testBook1 = new Book("Who Fears Death", "Nnedi Okorafor", 2010);
+        Book testBook2 = new Book("1984", "George Orwell", 1966);
+        testBookList.add(testBook1);
+        testBookList.add(testBook2);
 
-
-        app.listBooks(expectedBookList,bookList);
+        app.listBooks(testBookList);
 
         List<String> outputBookList = asList(outputStream.toString().split("\n"));
 
         assertThat(outputBookList, is(expectedBookList));
    }
 
+    public void shouldDisplayMenuWhenIStartTheApp() {
+        app.start();
+
+        String[] startOutput = outputStream.toString().split("\n");
+
+    }
 }
