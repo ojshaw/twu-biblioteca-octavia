@@ -23,11 +23,11 @@ public class BibliotecaAppTest {
     private final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
     private final PrintStream mockOut = mock(PrintStream.class);
     private Library mockLib = mock(Library.class);
+    private InputScannerWrapper mockIn = mock(InputScannerWrapper.class);
     private BibliotecaApp app;
 
     @Before
     public void setUp() {
-        InputScannerWrapper mockIn = mock(InputScannerWrapper.class);
         app = new BibliotecaApp(mockOut, mockIn, mockLib);
     }
 
@@ -101,14 +101,22 @@ public class BibliotecaAppTest {
 
     @Test
     public void shouldCallListBooksWhenISelectListOfBooks() {
-        InputScannerWrapper mockInputReader = mock(InputScannerWrapper.class);
-        Library mockLib = mock(Library.class);
-        PrintStream mockOutputStream = mock(PrintStream.class);
-        when(mockInputReader.readUserInput()).thenReturn("1");
-        BibliotecaApp app = new BibliotecaApp(mockOutputStream, mockInputReader, mockLib);
+        when(mockIn.readUserInput()).thenReturn("1");
 
         app.start();
 
         verify(mockLib, times(1)).listBooks();
     }
+
+    @Test
+    public void shouldNotifyWhenAnInvalidOptionIsEntered() {
+        //encapsulate the select option function to test outside the while loop
+        when(mockIn.readUserInput()).thenReturn("o");
+
+        app.start();
+
+        String expectedMsg = "Please select a valid option!";
+        verify(mockOut).println(expectedMsg);
+    }
+
 }

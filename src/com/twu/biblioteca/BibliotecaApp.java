@@ -31,6 +31,8 @@ public class BibliotecaApp {
             String userInput = in.readUserInput();
             if (userInput.equals("1")) {
                 listBooks();
+            } else {
+                out.println("Please select a valid option!");
             }
         } catch (Exception e) {
 
@@ -57,5 +59,7 @@ public class BibliotecaApp {
     public void displayMenu() {
         out.println("1 - List of Books");
     }
+
+
 
 }
