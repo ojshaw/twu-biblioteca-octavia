@@ -28,4 +28,13 @@ public class Library {
 
         return booksString;
     }
+
+    public boolean checkOutBook(Book book) {
+        if (books.contains(book)) {
+            books.remove(book);
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

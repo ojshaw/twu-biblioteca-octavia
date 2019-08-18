@@ -3,7 +3,6 @@ package com.twu.biblioteca;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
@@ -113,5 +112,4 @@ public class AppMenuTest {
 
         verify(mockOut).println("Goodbye!");
     }
-
 }
