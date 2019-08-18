@@ -41,6 +41,7 @@ public class AppMenu {
 
         String title = in.readUserInput();
 
+        lib.checkOutBook(title);
 
     }
 

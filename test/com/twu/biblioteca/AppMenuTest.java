@@ -123,4 +123,14 @@ public class AppMenuTest {
         verify(mockOut).println(expectedMsg);
     }
 
+    @Test
+    public void shouldCallCheckOutBookOnInputBookTitle() {
+        String bookTitle = "Catcher in the Rye";
+        when(mockIn.readUserInput()).thenReturn("2", bookTitle);
+
+        menu.doWhileRunning();
+
+        verify(mockLib).checkOutBook(bookTitle);
+    }
+
 }
