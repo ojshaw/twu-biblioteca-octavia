@@ -133,4 +133,18 @@ public class AppMenuTest {
         verify(mockLib).checkOutBook(bookTitle);
     }
 
+    @Test
+    public void shouldPrintSuccessMessageAfterCheckingOutBook() {
+        String expectedSuccessMessage = "Thank you! Enjoy the book!";
+        String bookTitle = "Who Fears Death";
+        when(mockIn.readUserInput()).thenReturn("2", bookTitle);
+        when(mockLib.checkOutBook(bookTitle)).thenReturn(true);
+
+        menu.doWhileRunning();
+
+        verify(mockOut).println(expectedSuccessMessage);
+    }
+
+
+
 }

@@ -24,6 +24,7 @@ public class AppMenu {
                 break;
             case "2":
                 checkOut();
+                break;
             case "q":
                 out.println("Goodbye!");
                 isRunning = false;
@@ -37,11 +38,16 @@ public class AppMenu {
 
     private void checkOut() {
         String checkOutMsg = "What is the title of the book you would like to check out?";
+        String successfulCheckOutMsg = "Thank you! Enjoy the book!";
+        String invalidOptionMsg = "";
         out.println(checkOutMsg);
 
         String title = in.readUserInput();
 
-        lib.checkOutBook(title);
+        if (lib.checkOutBook(title)) {
+            out.println(successfulCheckOutMsg);
+        }
+
 
     }
 
