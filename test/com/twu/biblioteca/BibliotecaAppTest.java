@@ -22,14 +22,12 @@ import static org.mockito.Mockito.*;
 public class BibliotecaAppTest {
 
     private final PrintStream mockOut = mock(PrintStream.class);
-    private Library mockLib = mock(Library.class);
-    private InputScannerWrapper mockIn = mock(InputScannerWrapper.class);
     private AppMenu mockMenu = mock(AppMenu.class);
     private BibliotecaApp app;
 
     @Before
     public void setUp() {
-        app = new BibliotecaApp(mockOut, mockIn, mockLib, mockMenu);
+        app = new BibliotecaApp(mockMenu);
     }
 
     @After
@@ -40,7 +38,7 @@ public class BibliotecaAppTest {
     public void shouldPrintWelcomeWhenIStartTheApp() throws IOException {
         app.start();
 
-        verify(mockOut).println("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!");
+        verify(mockMenu, times(1)).welcome();
     }
 
     @Test

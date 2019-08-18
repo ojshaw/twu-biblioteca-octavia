@@ -46,4 +46,8 @@ public class AppMenu {
     public boolean shouldRun() {
         return isRunning;
     }
+
+    public void welcome() {
+        out.println("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!");
+    }
 }

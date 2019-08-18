@@ -22,6 +22,15 @@ public class AppMenuTest {
     public void setUp() {
         menu = new AppMenu(mockIn, mockOut, mockLib);
     }
+
+    @Test
+    public void shouldPrintWelcome() {
+        String expectedWelcome = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!";
+        menu.welcome();
+
+        verify(mockOut).println(expectedWelcome);
+    }
+
     @Test
     public void shouldPrintABookTitleWhenIStartTheApp() throws IOException {
         ArrayList<String> expectedBooks = new ArrayList<>();
