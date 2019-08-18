@@ -2,8 +2,6 @@ package com.twu.biblioteca;
 
 import java.io.PrintStream;
 
-import static java.lang.System.exit;
-
 public class AppMenu {
     private InputScannerWrapper in;
     private PrintStream out;

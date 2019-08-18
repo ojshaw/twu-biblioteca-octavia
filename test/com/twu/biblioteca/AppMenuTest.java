@@ -13,7 +13,6 @@ import static org.mockito.Mockito.times;
 
 public class AppMenuTest {
 
-    private final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
     private final PrintStream mockOut = mock(PrintStream.class);
     private Library mockLib = mock(Library.class);
     private InputScannerWrapper mockIn = mock(InputScannerWrapper.class);
@@ -32,7 +31,6 @@ public class AppMenuTest {
         when(mockLib.listBooks()).thenReturn(expectedBooks);
 
         menu.listBooks();
-//        app.listBooks();
 
         verify(mockOut, times(1)).println(expectedBookString);
     }
@@ -48,7 +46,6 @@ public class AppMenuTest {
         when(mockLib.listBooks()).thenReturn(expectedBooks);
 
         menu.listBooks();
-//        app.listBooks();
 
         verify(mockOut, times(1)).println(expectedBookString1);
         verify(mockOut, times(1)).println(expectedBookString2);
@@ -65,7 +62,6 @@ public class AppMenuTest {
         when(mockLib.listBooks()).thenReturn(expectedBooks);
 
         menu.listBooks();
-//       app.listBooks();
 
         verify(mockOut).println(expectedBookString1);
         verify(mockOut).println(expectedBookString2);
@@ -92,7 +88,6 @@ public class AppMenuTest {
 
     @Test
     public void shouldNotifyWhenAnInvalidOptionIsEntered() {
-        //encapsulate the select option function to test outside the while loop
         when(mockIn.readUserInput()).thenReturn("o");
 
         menu.doWhileRunning();

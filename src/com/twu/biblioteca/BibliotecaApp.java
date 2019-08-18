@@ -1,9 +1,6 @@
 package com.twu.biblioteca;
 
-import com.sun.xml.internal.xsom.impl.scd.Iterators;
-
 import java.io.PrintStream;
-import java.util.ArrayList;
 
 public class BibliotecaApp {
     private PrintStream out;
@@ -29,30 +26,8 @@ public class BibliotecaApp {
 
     public void start() {
         welcome();
-//        displayMenu();
         while (shouldRun()) {
             menu.doWhileRunning();
-//            try {
-//                String userInput = in.readUserInput();
-//                switch (userInput) {
-//                    case "1":
-//                        listBooks();
-//                        break;
-//                    case "q":
-//                        quit();
-//                        break;
-//                    default:
-//                        out.println("Please select a valid option!");
-//                }
-//
-////            if (userInput.equals("1")) {
-////                listBooks();
-////            } else {
-////                out.println("Please select a valid option!");
-////            }
-//            } catch (Exception e) {
-//
-//            }
         }
     }
 
