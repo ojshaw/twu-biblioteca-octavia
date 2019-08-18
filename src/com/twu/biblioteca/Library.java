@@ -29,12 +29,20 @@ public class Library {
         return booksString;
     }
 
-    public boolean checkOutBook(Book book) {
-        if (books.contains(book)) {
-            books.remove(book);
-            return true;
-        } else {
-            return false;
+    public boolean checkOutBook(String bookTitle) {
+        for (Book book : this.books) {
+           if (book.match(bookTitle)) {
+               books.remove(book);
+               return true;
+           }
         }
+
+        return false;
+//        if (books.contains(book)) {
+//            books.remove(book);
+//            return true;
+//        } else {
+//            return false;
+//        }
     }
 }

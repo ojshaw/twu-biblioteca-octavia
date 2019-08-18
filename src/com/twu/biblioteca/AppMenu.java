@@ -22,6 +22,8 @@ public class AppMenu {
             case "1":
                 listBooks();
                 break;
+            case "2":
+                checkOut();
             case "q":
                 out.println("Goodbye!");
                 isRunning = false;
@@ -33,8 +35,19 @@ public class AppMenu {
 
     }
 
+    private void checkOut() {
+        String checkOutMsg = "What is the title of the book you would like to check out?";
+        out.println(checkOutMsg);
+
+        String title = in.readUserInput();
+
+
+    }
+
     public void displayMenu() {
         out.println("1 - List of Books");
+        out.println("2 - Check Out a Book");
+        out.println("Press 'q' to quit");
     }
 
     public void listBooks() {

@@ -15,4 +15,12 @@ public class Book {
     public String toString() {
         return String.format("%s, %s, %d", this.title, this.author, this.year);
     }
+
+    public boolean match(String bookTitle) {
+        if (bookTitle.toUpperCase().equals(this.title.toUpperCase())) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

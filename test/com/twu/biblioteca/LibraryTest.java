@@ -5,11 +5,13 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
 
 public class LibraryTest {
 
-    private ArrayList<Book> books = mock(ArrayList.class);
+    private ArrayList<Book> books = new ArrayList<>();
+    private String bookTitle = "A Book";
     private Book book = mock(Book.class);
     private Library lib;
 
@@ -20,10 +22,9 @@ public class LibraryTest {
 
     @Test
     public void shouldRemoveBookFromListWhenCheckedOut() {
-        when(books.contains(book)).thenReturn(true);
+        books.add(book);
+        when(book.match(bookTitle)).thenReturn(true);
 
-        lib.checkOutBook(book);
-
-        verify(books).remove(book);
+        assertTrue(lib.checkOutBook(bookTitle));
     }
 }

@@ -112,4 +112,15 @@ public class AppMenuTest {
 
         verify(mockOut).println("Goodbye!");
     }
+
+    @Test
+    public void shouldAskForABookWhenBookCheckOutBookOptionIsSelected() {
+        when(mockIn.readUserInput()).thenReturn("2");
+        String expectedMsg =  "What is the title of the book you would like to check out?";
+
+        menu.doWhileRunning();
+
+        verify(mockOut).println(expectedMsg);
+    }
+
 }
