@@ -170,5 +170,17 @@ public class AppMenuTest {
         verify(mockOut).println(expectedSuccessMessage);
     }
 
+    @Test
+    public void shouldPrintUnsuccessfulMessageAfterUnsuccessfulReturn() {
+        String expectedUnsuccessfulMessage = "That is not a valid book to return.";
+        String bookTitle = "Who Fears Death";
+
+        when(mockIn.readUserInput()).thenReturn("3", bookTitle);
+        when(mockLib.returnBook(bookTitle)).thenReturn(false);
+
+        menu.doWhileRunning();
+
+        verify(mockOut).println(expectedUnsuccessfulMessage);
+    }
 
 }

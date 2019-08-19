@@ -42,6 +42,7 @@ public class AppMenu {
     private void returnBook() {
         String returnMsg = "What is the title of the book you would like to return?";
         String successfulReturnMsg = "Thank you for returning the book.";
+        String unsuccessfulReturnMsg = "That is not a valid book to return.";
 
         out.println(returnMsg);
 
@@ -49,6 +50,8 @@ public class AppMenu {
 
         if(lib.returnBook(title)) {
             out.println(successfulReturnMsg);
+        } else {
+            out.println(unsuccessfulReturnMsg);
         }
 
     }
