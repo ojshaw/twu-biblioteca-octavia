@@ -3,40 +3,50 @@ package com.twu.biblioteca;
 import java.util.ArrayList;
 
 public class Library {
-    private ArrayList<Book> books;
+    private ArrayList<Book> availableBooks;
+    private ArrayList<Book> checkedOutBooks;
 
-    public Library(ArrayList<Book> books) {
-        this.books = books;
+    public Library(ArrayList<Book> availableBooks, ArrayList<Book> checkedOutBooks) {
+        this.availableBooks = availableBooks;
+        this.checkedOutBooks = checkedOutBooks;
     }
 
     public Library() {
-        ArrayList<Book> testBookList = new ArrayList<>();
+        ArrayList<Book> testAvailableBookList = new ArrayList<>();
         Book testBook1 = new Book("Who Fears Death", "Nnedi Okorafor", 2010);
         Book testBook2 = new Book("1984", "George Orwell", 1966);
-        testBookList.add(testBook1);
-        testBookList.add(testBook2);
+        testAvailableBookList.add(testBook1);
+        testAvailableBookList.add(testBook2);
 
-        this.books = testBookList;
+        this.availableBooks = testAvailableBookList;
 
     }
 
     public ArrayList<String> listBooks() {
+        return listAvailableBooks();
+    }
+
+    private ArrayList<String> listAvailableBooks() {
         ArrayList<String> booksString = new ArrayList<>();
-        for (Book book : this.books) {
-            booksString.add(book.toString());
+        for (Book book : this.availableBooks) {
+                booksString.add(book.toString());
         }
 
         return booksString;
     }
 
     public boolean checkOutBook(String bookTitle) {
-        for (Book book : this.books) {
+        for (Book book : this.availableBooks) {
            if (book.match(bookTitle)) {
-               books.remove(book);
+               this.checkedOutBooks.add(book);
+               this.availableBooks.remove(book);
                return true;
            }
         }
-
         return false;
+    }
+
+    public boolean returnBook(String bookTitle) {
+        return true;
     }
 }

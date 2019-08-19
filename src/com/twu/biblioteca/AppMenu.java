@@ -54,7 +54,7 @@ public class AppMenu {
     public void displayMenu() {
         out.println("1 - List of Books");
         out.println("2 - Check Out a Book");
-        out.println("Press 'q' to quit");
+        out.println("Enter 'q' to quit");
     }
 
     public void listBooks() {

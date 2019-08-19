@@ -11,29 +11,39 @@ import static org.mockito.Mockito.*;
 
 public class LibraryTest {
 
-    private ArrayList<Book> books;
-    private String matchingBookTitle = "1984";
+    private ArrayList<Book> availableBooks;
+    private ArrayList<Book> checkedOutBooks;
+    private String bookTitle = "1984";
     private String unknownBookTitle = "Catcher in the Rye";
-    private Book book = new Book("1984", "George Orwell", 1966);
+    private Book book;
     private Library lib;
 
     @Before
     public void setUp() {
-        books = new ArrayList<>();
-        books.add(book);
-        lib = new Library(books);
+        book = new Book(bookTitle, "George Orwell", 1966);
+        checkedOutBooks = new ArrayList<>();
+        availableBooks = new ArrayList<>();
+        availableBooks.add(book);
+        lib = new Library(availableBooks, checkedOutBooks);
     }
 
     @Test
-    public void shouldRemoveBookFromListWhenCheckedOut() {
-        lib.checkOutBook(matchingBookTitle);
+    public void shouldReturnStringContainingBookTitlesInLibrary() {
+        ArrayList<String> bookString = lib.listBooks();
 
-        assertFalse(books.contains(book));
+        assertTrue(bookString.contains(book.toString()));
+    }
+
+    @Test
+    public void shouldRemoveBookFromBookStringWhenCheckedOut() {
+        lib.checkOutBook(bookTitle);
+        ArrayList<String> bookStringList = lib.listBooks();
+        assertFalse(bookStringList.contains(book.toString()));
     }
 
     @Test
     public void shouldReturnTrueWhenCheckOutWasPossible() {
-        boolean bookWasCheckedOut = lib.checkOutBook(matchingBookTitle);
+        boolean bookWasCheckedOut = lib.checkOutBook(bookTitle);
 
         assertTrue(bookWasCheckedOut);
     }
@@ -44,4 +54,5 @@ public class LibraryTest {
 
         assertFalse(bookWasCheckedOut);
     }
+
 }
