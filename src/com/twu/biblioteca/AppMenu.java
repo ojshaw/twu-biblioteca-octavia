@@ -39,16 +39,16 @@ public class AppMenu {
     private void checkOut() {
         String checkOutMsg = "What is the title of the book you would like to check out?";
         String successfulCheckOutMsg = "Thank you! Enjoy the book!";
-        String invalidOptionMsg = "";
+        String unSuccessfulCheckOutMsg = "Sorry, that book is not available.";
         out.println(checkOutMsg);
 
         String title = in.readUserInput();
 
         if (lib.checkOutBook(title)) {
             out.println(successfulCheckOutMsg);
+        } else {
+            out.println(unSuccessfulCheckOutMsg);
         }
-
-
     }
 
     public void displayMenu() {

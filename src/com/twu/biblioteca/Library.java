@@ -38,11 +38,5 @@ public class Library {
         }
 
         return false;
-//        if (books.contains(book)) {
-//            books.remove(book);
-//            return true;
-//        } else {
-//            return false;
-//        }
     }
 }

@@ -145,6 +145,16 @@ public class AppMenuTest {
         verify(mockOut).println(expectedSuccessMessage);
     }
 
+    @Test
+    public void shouldPrintUnsuccessfulCheckOutMessageForUnsuccessfulCheckOut() {
+        String expectedUnsuccessfulMessage = "Sorry, that book is not available.";
+        String bookTitle = "Who Fears Death";
+        when(mockIn.readUserInput()).thenReturn("2", bookTitle);
+        when(mockLib.checkOutBook(bookTitle)).thenReturn(false);
 
+        menu.doWhileRunning();
+
+        verify(mockOut).println(expectedUnsuccessfulMessage);
+    }
 
 }
