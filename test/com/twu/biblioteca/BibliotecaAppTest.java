@@ -11,7 +11,6 @@ import static org.mockito.Mockito.*;
 
 public class BibliotecaAppTest {
 
-    private final PrintStream mockOut = mock(PrintStream.class);
     private AppMenu mockMenu = mock(AppMenu.class);
     private BibliotecaApp app;
 

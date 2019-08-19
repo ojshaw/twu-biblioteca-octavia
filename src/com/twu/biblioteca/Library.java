@@ -13,13 +13,14 @@ public class Library {
 
     public Library() {
         ArrayList<Book> testAvailableBookList = new ArrayList<>();
+        ArrayList<Book> testCheckedOutBookList = new ArrayList<>();
         Book testBook1 = new Book("Who Fears Death", "Nnedi Okorafor", 2010);
         Book testBook2 = new Book("1984", "George Orwell", 1966);
         testAvailableBookList.add(testBook1);
         testAvailableBookList.add(testBook2);
 
         this.availableBooks = testAvailableBookList;
-
+        this.checkedOutBooks = testCheckedOutBookList;
     }
 
     public ArrayList<String> listBooks() {

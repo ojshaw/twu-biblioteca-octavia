@@ -62,4 +62,15 @@ public class LibraryTest {
         ArrayList<String> bookStringList = lib.listBooks();
         assertTrue(bookStringList.contains(book.toString()));
     }
+    @Test
+    public void shouldReturnTrueWhenReturnWasPossible() {
+        lib.checkOutBook(bookTitle);
+
+        assertTrue(lib.returnBook(bookTitle));
+    }
+
+    @Test
+    public void shouldReturnFalseWhenReturnWasNotPossible() {
+        assertFalse(lib.returnBook(unavailableBookTitle));
+    }
 }

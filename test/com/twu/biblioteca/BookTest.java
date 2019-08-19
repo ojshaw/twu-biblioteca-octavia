@@ -23,7 +23,7 @@ public class BookTest {
     }
 
     @Test
-    public void shouldReturnFalseWhenInputTitileDoesntMatchBookTitle() {
+    public void shouldReturnFalseWhenInputTitleDoesntMatchBookTitle() {
         String inputTitle = "Bookkeeper";
 
         assertFalse(book.match(inputTitle));
