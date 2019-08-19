@@ -14,7 +14,7 @@ public class LibraryTest {
     private ArrayList<Book> availableBooks;
     private ArrayList<Book> checkedOutBooks;
     private String bookTitle = "1984";
-    private String unknownBookTitle = "Catcher in the Rye";
+    private String unavailableBookTitle = "Catcher in the Rye";
     private Book book;
     private Library lib;
 
@@ -50,9 +50,16 @@ public class LibraryTest {
 
     @Test
     public void shouldReturnFalseWhenCheckOutWasNotPossible() {
-        boolean bookWasCheckedOut = lib.checkOutBook(unknownBookTitle);
+        boolean bookWasCheckedOut = lib.checkOutBook(unavailableBookTitle);
 
         assertFalse(bookWasCheckedOut);
     }
 
+    @Test
+    public void shouldAddReturnedBookToLibraryBookList() {
+        lib.checkOutBook(bookTitle);
+        lib.returnBook(bookTitle);
+        ArrayList<String> bookStringList = lib.listBooks();
+        assertTrue(bookStringList.contains(book.toString()));
+    }
 }

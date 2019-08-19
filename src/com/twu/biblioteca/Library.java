@@ -47,6 +47,13 @@ public class Library {
     }
 
     public boolean returnBook(String bookTitle) {
-        return true;
+        for (Book book : this.checkedOutBooks) {
+            if (book.match(bookTitle)) {
+                this.availableBooks.add(book);
+                this.checkedOutBooks.remove(book);
+                return true;
+            }
+        }
+        return false;
     }
 }
