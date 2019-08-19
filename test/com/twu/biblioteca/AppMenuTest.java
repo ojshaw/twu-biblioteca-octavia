@@ -77,7 +77,7 @@ public class AppMenuTest {
 
     @Test
     public void shouldDisplayMenuWhenIStartTheApp() {
-        String expectedMenu = "1 - List of Books";
+        String expectedMenu = "1 - List of books";
 
         menu.displayMenu();
 
@@ -155,6 +155,19 @@ public class AppMenuTest {
         menu.doWhileRunning();
 
         verify(mockOut).println(expectedUnsuccessfulMessage);
+    }
+
+    @Test
+    public void shouldPrintSuccessMessageAfterSuccessfulReturn() {
+        String expectedSuccessMessage = "Thank you for returning the book.";
+        String bookTitle = "Who Fears Death";
+
+        when(mockIn.readUserInput()).thenReturn("3", bookTitle);
+        when(mockLib.returnBook(bookTitle)).thenReturn(true);
+
+        menu.doWhileRunning();
+
+        verify(mockOut).println(expectedSuccessMessage);
     }
 
 

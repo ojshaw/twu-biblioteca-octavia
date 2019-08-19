@@ -25,6 +25,9 @@ public class AppMenu {
             case "2":
                 checkOut();
                 break;
+            case "3":
+                returnBook();
+                break;
             case "q":
                 out.println("Goodbye!");
                 isRunning = false;
@@ -32,6 +35,20 @@ public class AppMenu {
             default:
                 out.println("Please select a valid option!");
                 break;
+        }
+
+    }
+
+    private void returnBook() {
+        String returnMsg = "What is the title of the book you would like to return?";
+        String successfulReturnMsg = "Thank you for returning the book.";
+
+        out.println(returnMsg);
+
+        String title = in.readUserInput();
+
+        if(lib.returnBook(title)) {
+            out.println(successfulReturnMsg);
         }
 
     }
@@ -52,8 +69,9 @@ public class AppMenu {
     }
 
     public void displayMenu() {
-        out.println("1 - List of Books");
-        out.println("2 - Check Out a Book");
+        out.println("1 - List of books");
+        out.println("2 - Check Out a book");
+        out.println("3 - Return a book");
         out.println("Enter 'q' to quit");
     }
 
